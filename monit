@@ -1,0 +1,1 @@
+csemonit ansible_host=128.238.64.251 become=yes become_method=sudo

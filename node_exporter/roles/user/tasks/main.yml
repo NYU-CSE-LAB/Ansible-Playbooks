@@ -1,0 +1,5 @@
+# Install Prometheus node-exporter.
+#
+
+- name: add user prometheus
+  user: name=prometheus groups=wheel append=yes

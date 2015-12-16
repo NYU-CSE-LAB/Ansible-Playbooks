@@ -1,0 +1,13 @@
+# This task creates a systemd service for Node Exporter
+
+- name: Create systemd service template to /etc/systemd/system
+  template: src=node_exporter.j2 dest={{ exporter_service }}
+  notify:
+  - reload systemd
+  become: yes
+  become_method: sudo
+
+- name: Enable and start the Node Exporter systemd service
+  service: name=node_exporter enabled=yes state=started
+  become: yes
+  become_method: sudo

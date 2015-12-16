@@ -1,0 +1,7 @@
+# variables applicable to all hosts
+
+node_exporter_github_link: https://github.com/prometheus/node_exporter/releases/download/0.12.0rc1/node_exporter-0.12.0rc1.linux-amd64.tar.gz
+
+node_exporter_path: /home/prometheus/Prometheus/node_exporter
+
+exporter_service: /etc/systemd/system/node_exporter.service

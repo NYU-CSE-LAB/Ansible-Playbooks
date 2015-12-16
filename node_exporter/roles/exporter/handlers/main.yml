@@ -1,0 +1,6 @@
+# handler to reload systemd config
+
+- name: reload systemd
+  become: yes
+  become_method: sudo
+  command: systemctl daemon-reload

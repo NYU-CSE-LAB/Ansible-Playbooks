@@ -1,0 +1,32 @@
+# Setup Node exporter as a service on SysV Init debian based systems
+# Node Exporter Module
+
+- name: create directory for node_exporter extracted binary
+  file: path=/home/prometheus/Prometheus/{{ node_exporter_version  }} state=directory
+  become: yes
+  become_user: prometheus
+
+- name: download and untar node_exporter in the newly created directory
+  unarchive: src={{ node_exporter_github_release }} dest=/home/prometheus/Prometheus/{{ node_exporter_version }} copy=no
+  become: yes
+  become_method: sudo
+
+- name: set node_exporter variables
+  copy: src="../files/etc-default-node_exporter"  dest=/etc/default/node_exporter
+  become: yes
+  become_method: sudo
+
+- name: copy INIT script to server
+  template: src="../templates/node_exporter.sysvinit.debian.sh.j2"  dest="/etc/init.d/node_exporter"  mode="a+x"
+  become: yes
+  become_method: sudo
+
+- name: set INIT status
+  service: name=node_exporter enabled=yes
+  become: yes
+  become_method: sudo
+
+- name: set INIT status and start
+  service: name=node_exporter state=started
+  become: yes
+  become_method: sudo

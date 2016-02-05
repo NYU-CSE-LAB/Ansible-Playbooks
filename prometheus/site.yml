@@ -1,0 +1,10 @@
+---
+#This playbook deploys prometheus server with node exporter, alertmanager, grafana, firewall rules and nginx. UBUNTU 14.04 verified only. 
+
+ # Apply common configuration to all hosts
+ - hosts: prometheus-dev
+   roles:
+   - user
+   - node_exporter
+   - alertmanager
+   - prometheus

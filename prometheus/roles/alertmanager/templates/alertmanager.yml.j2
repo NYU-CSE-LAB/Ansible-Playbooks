@@ -1,0 +1,23 @@
+global:
+
+# The root route with all parameters, which are inherited by the child
+# routes if they are not overwritten.
+route:
+  receiver: 'default-receiver'
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  group_by: [cluster, alertname]
+  # All alerts that do not match the following child routes
+  # will remain at the root node and be dispatched to 'default-receiver'.
+
+receivers:
+- name: 'default-receiver'
+  # SLACK Webhook URL Config
+  slack_configs:
+    # Whether or not to notify about resolved alerts.
+    - send_resolved: true
+    # The Slack webhook URL.
+      api_url: {{ webhook_url }}
+      # The channel or user to send notifications to.
+      channel: '{{ slack_channel }}'

@@ -1,0 +1,39 @@
+# Variables shared by all hosts
+
+#####PROMETHEUS SERVER####
+prometheus_version_number: 0.17.0rc1
+prometheus_version: prometheus-0.17.0rc1.linux-amd64
+prometheus_github_release: https://github.com/prometheus/prometheus/releases/download/{{ prometheus_version_number }}/{{ prometheus_version }}.tar.gz
+prometheus_extract_path: /home/prometheus/Prometheus/
+prometheus_path: /home/prometheus/Prometheus/{{ prometheus_version }}
+
+sudo_group: sudo
+prometheus_user: prometheus
+
+gosu_version: 1.7
+
+prometheus_log_path: /var/log/prometheus
+prometheus_pid_path: /var/run/prometheus
+
+prometheus_alertmanager_url: http://localhost:9093
+prometheus_db_path: '{{ prometheus_path }}/data'
+prometheus_opts:
+prometheus_rule_file: alert.rules
+
+#####NODE_EXPORTER####
+node_exporter_version_number: 0.12.0rc3
+node_exporter_version: node_exporter-0.12.0rc3.linux-amd64
+prometheus_node_exporter_opts: 
+node_exporter_path: /home/prometheus/Prometheus/{{ node_exporter_version }}
+node_exporter_github_release: https://github.com/prometheus/node_exporter/releases/download/{{ node_exporter_version_number }}/{{ node_exporter_version }}.tar.gz
+
+#####ALERTMANAGER####
+alertmanager_version_number: 0.1.0-beta2
+alertmanager_ver: alertmanager-0.1.0-beta2.linux-amd64
+alertmanager_github_ver: https://github.com/prometheus/alertmanager/releases/download/{{ alertmanager_version_number }}/{{ alertmanager_ver }}.tar.gz
+alertmanager_path: /home/prometheus/Prometheus/{{ alertmanager_ver }}
+web_external_url: alertmanager/
+prometheus_alertmanager_db_path: ./data
+
+webhook_url: "https://hooks.slack.com/services/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"
+slack_channel: "#downtime"

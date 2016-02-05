@@ -1,0 +1,17 @@
+# Create prometheus user and download and extract prometheus.
+# USER module
+
+- name: add user prometheus
+  user: name=prometheus groups={{ sudo_group }} append=yes
+  become: yes
+  become_method: sudo
+
+- name: grant prometheus password less sudo
+  lineinfile: dest=/etc/sudoers state=present regexp='^%prometheus ALL\=' line='%prometheus ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
+  become: yes
+  become_method: sudo
+
+- name: install helper utility "gosu"
+  include: install-gosu.yml
+  become: yes
+  become_method: sudo

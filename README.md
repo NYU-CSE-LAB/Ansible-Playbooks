@@ -5,5 +5,8 @@ Deployment of prometheus monitoring service with node exporter, prometheus, aler
 1. https://github.com/William-Yeh/ansible-prometheus
   - sysvinit scripts for alertmanager, prometheus, and node_exporter.
 
-# License:
+## Contributors
+
+- [Amit Biswas](https://github.com/akbisw)
+## License:
 Read the [MIT LICENSE](LICENSE).

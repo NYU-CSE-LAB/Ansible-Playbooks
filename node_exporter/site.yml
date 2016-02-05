@@ -1,7 +1,0 @@
-# Runs the whole application for adding node exporter to targeted hosts
-- name: Create prometheus user and download node_exporter
-  hosts: RedHat
-
-  roles:
-    - user
-    - exporter

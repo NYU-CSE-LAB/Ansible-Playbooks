@@ -21,6 +21,9 @@
 
 - name: download gosu executable
   get_url: url="{{ gosu_exe_url }}"  dest="/usr/local/bin/gosu"
+  become: yes
+  become_method: sudo
 
 - name: add executable permission
   file: path="/usr/local/bin/gosu" state=file mode="a+x"
+  become_method: sudo
